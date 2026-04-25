@@ -5,32 +5,23 @@
 ### Target Variable
 The **target variable** is **`items_sold`**, which represents the number of items sold in a store during a given month under a particular promotion.
 
-### Candidate Input Features
+### Input Features
 Possible input features include:
 
-- **promotion_type**  
-  (Flat Discount, BOGO, Free Gift with Purchase, Category-Specific Offer, Loyalty Points Bonus)
+- **store details**
+  - store size, store location type (urban, semi-urban, rural), store_id
 
-- **store characteristics**
-  - store size
-  - store location type (urban, semi-urban, rural)
+- **promotion_type**  
+  - promotion type (Flat Discount, BOGO, Free Gift with Purchase, Category-Specific Offer, Loyalty Points Bonus)
 
 - **customer and market factors**
-  - monthly footfall
-  - local competition density
-  - customer demographics
+  - monthly footfall, local competition density, customer demographics
 
-- **time-related features**
-  - month
-  - season
-  - festive period indicator
-  - year
+- **time-related factors**
+  - month, season, festive period, year
 
 - **historical performance features**
-  - previous month sales
-  - previous promotion performance
-  - average basket size
-  - repeat customer rate
+  - previous month sales, previous promotion performance, average basket size, repeat customer rate
 
 ### Type of Machine Learning Problem
 This is a **supervised machine learning regression problem**.
@@ -70,7 +61,7 @@ If the wrong target is chosen, the model may learn patterns that are mathematica
 
 ## (c) Alternative Modelling Strategy
 
-Instead of using one single global model for all 50 stores, a better approach would be a **segmented or hierarchical modelling strategy**.
+Instead of using one single global model for all stores, a better approach would be a **segmented or hierarchical modelling strategy**.
 
 ### Proposed approach
 The stores can first be grouped based on important differences such as:
@@ -97,7 +88,7 @@ A segmented or hierarchical strategy is better because it:
 - and leads to better promotion decisions for each group of stores.
 
 ### Conclusion
-So, instead of one global model, the retailer should use a **location-aware modelling strategy** that reflects how different store groups behave differently under promotions.
+So, instead of one global model, the retailer should use a **location specific modelling strategy** that reflects how different store groups behave differently under promotions.
 
 # B2. Data and EDA Strategy
 
@@ -131,8 +122,7 @@ This adds store-level information such as:
 ### Step 3: Join promotion details
 Join the **promotion details** table using:
 
-- **promotion_id**  
-  or, if no ID exists, using **promotion_type**
+- **promotion_type** 
 
 This adds information such as:
 
